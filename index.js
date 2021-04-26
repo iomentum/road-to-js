@@ -1,110 +1,89 @@
+function helloWorld() {
+    const helloWorld = "Hello World !"
 
-
-// 3 fizz
-// 5 buzz
-// 15 fizzbuzz
-
-console.log(1 + 1);
-console.log(1 - 1);
-console.log(2 * 1);
-console.log(2 / 2);
-console.log(9 % 3);
-console.log(10 % 5);
-
-
-const agePersonne1 = 20;
-const agePersonne2 = 21;
-const agePersonne3 = 22;
-const agePersonne4 = 23;
-
-const isAdult = (age) => {
-    return age >= 18;
+    console.log(helloWorld)
 }
 
-const agePersonnes = [agePersonne1, agePersonne2, agePersonne3, agePersonne4];
+helloWorld();
 
-for (i = 1; i < agePersonnes.length; i++) {
-    console.log(agePersonnes[i]);
+const GreaterThanFive = (number) => {
+    if (number > 5) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
-for (agePersonne of agePersonnes) {
-    console.log(agePersonne);
+console.log(GreaterThanFive(6));
+
+
+const numberBetweenFiveAndFifteen = (number) => {
+    if (number > 5) {
+        if(number < 15) {
+            return true;
+        }
+        return false;
+    } 
+    return false;
 }
 
-for (index in agePersonnes) {
-    console.log(agePersonnes[index]);
+console.log(numberBetweenFiveAndFifteen(17));
+
+function countToNumber(max) {
+    for (let i = 0; i <= max; i++) {
+        if (i <= 20) {
+            console.log(`sous 20, ${i}`);
+        } else {
+            console.log(`au dessus de 20, ${i}`);
+        }
+    }
 }
 
-// ---------------------------------------------
+countToNumber(60);
 
-// fizzBuzz(100) => compter de 0 a 100 et afficher le nombre // boucle
-// 3 fizz // condition
-// 5 buzz // condition
-// 15 fizzbuzz // condition
+function divisibleByThree(n) {
+    if (n % 3 === 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 
-const divisibleByThree = (n) => n % 3 === 0;
-const divisibleByFive = (n) => n % 5 === 0;
-const divisibleByFifteen = (n) => n % 15 === 0;
+function divisibleByFive(n) {
+    if (n % 5 === 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
-// fonction qui compte et ecrit fizz / buzz / fizzbuzz et les nombres
-const fizzBuzz = (max) => {
+
+function divisibleByFifteen(n) {
+    if (n % 15 === 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function fizzBuzz(max) {
     let response = "";
-    // compte
+
     for (let i = 0; i <= max; i++) {
         if (i === 0) {
             response += i;
         } else if (divisibleByFifteen(i)) {
-            response += ",fizzbuzz";
+            response += ", fizzbuzz";
         } else if (divisibleByFive(i)) {
-            response += ",buzz";
+            response += ", fizz";
         } else if (divisibleByThree(i)) {
-            response += ",fizz";
+            response += ", fibo";
         } else {
-            response += "," + i;
+            response += ", " + i;
         }
     }
-    return response;
-};
-
-const testFizzBuzz = (expected, max) => {
-    const actual = fizzBuzz(max);
-    if (expected !== actual) {
-        console.log(`expected \n ${expected} \nfound \n${actual} \n`);
-        process.exit();
-    } else {
-        console.log("passed");
-    }
+    return response
 }
 
-// Setup
-let max = 1;
-let expected = "0,1";
-
-testFizzBuzz(expected, max);
-
-max = 2;
-expected = "0,1,2";
-testFizzBuzz(expected, max);
-
-max = 0;
-expected = "0";
-testFizzBuzz(expected, max);
-
-max = 3;
-expected = "0,1,2,fizz";
-testFizzBuzz(expected, max);
-
-max = 5;
-expected = "0,1,2,fizz,4,buzz";
-testFizzBuzz(expected, max);
-
-max = 15;
-expected = "0,1,2,fizz,4,buzz,fizz,7,8,fizz,buzz,11,fizz,13,14,fizzbuzz";
-testFizzBuzz(expected, max);
-
-
-// remove divisibleByFifteen
-// create a variant that will match any divisible and reply with any word
-
-// testMyFizzBuzz([[2, "toto"], [3, "tata"]], 5, "0,1,toto,tata,toto,5");
+console.log(fizzBuzz(56));
