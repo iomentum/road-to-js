@@ -7,7 +7,7 @@ const RegisterForm = () => {
   const [age, setAge] = useState(0);
   const [, setFavComics] = useState("");
   const [, setFavCarBrand] = useState("");
-  const [gender, setGender] = useState(undefined);
+  const [gender, setGender] = useState("");
   const [color, setColor] = useState("");
 
   useEffect(() => {
