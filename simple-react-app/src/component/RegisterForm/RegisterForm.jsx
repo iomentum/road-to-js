@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./RegisterForm.css";
+import Field from "../Fields/Field";
 
 const RegisterForm = () => {
+  const [fullName, setFullName] = useState("");
+  const [age, setAge] = useState(0);
+  const [favComics, setFavComics] = useState("");
+  const [favCarBrand, setFavCarBrand] = useState("");
+
   return (
     <form>
       <div className="container">
@@ -9,35 +15,18 @@ const RegisterForm = () => {
         <p>Completez les champs ci-dessous</p>
         <hr />
 
-        <label for="email">
-          <b>Email</b>
-        </label>
-        <input
-          type="text"
-          placeholder="Enterez votre adresse email"
-          name="email"
-          required
-        />
+        <Field label="Nom complet" setField={setFullName} />
+        <Field label="Age" type="number" setField={setAge} />
 
-        <label for="email">
-          <b>Email</b>
-        </label>
-        <input
-          type="text"
-          placeholder="Enterez votre adresse email"
-          name="email"
-          required
-        />
-
-        <label for="email">
-          <b>Email</b>
-        </label>
-        <input
-          type="text"
-          placeholder="Enterez votre adresse email"
-          name="email"
-          required
-        />
+        {age ? (
+          age >= 18 ? (
+            <Field label="Marque de voiture préféré" setField={setFavComics} />
+          ) : (
+            <Field label="Dessin animé préféré" setField={setFavCarBrand} />
+          )
+        ) : (
+          []
+        )}
 
         <button type="submit" className="signupbtn">
           S'inscrire
